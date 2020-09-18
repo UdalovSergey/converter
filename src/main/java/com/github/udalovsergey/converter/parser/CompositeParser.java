@@ -33,7 +33,7 @@ public class CompositeParser implements FileParser {
             case "json":
                 return jsonParser.parse(file);
             default:
-                throw new ParserException(format("Unsupported file format %s", fileExtension));
+                throw new ParserException(format("Unsupported file format [%s]", fileExtension));
         }
     }
 
