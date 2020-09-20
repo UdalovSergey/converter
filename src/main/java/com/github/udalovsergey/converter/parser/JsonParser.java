@@ -26,9 +26,9 @@ public class JsonParser implements FileParser {
                 try {
                     order = objectMapper.readValue(line, Order.class);
                 } catch (JsonProcessingException e) {
-                    return new ParserResult(file.getName(), lineCounter.getAndIncrement(), e.getMessage());
+                    return ParserResult.ofParsingFailure(file.getName(), lineCounter.getAndIncrement(), e.getMessage());
                 }
-                return new ParserResult(order, file.getName(), lineCounter.getAndIncrement());
+                return ParserResult.ofOrder(order, file.getName(), lineCounter.getAndIncrement());
             });
         } catch (IOException e) {
             throw new ParserException(e);

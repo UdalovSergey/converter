@@ -16,7 +16,7 @@ public class Order {
     private BigDecimal amount;
     @NotBlank(message = "'currency' must not be blank")
     private String currency;
-    @NotNull(message = "'comment' must not be null")
+    @NotBlank(message = "'comment' must not be blank")
     private String comment;
 
     public Order() {

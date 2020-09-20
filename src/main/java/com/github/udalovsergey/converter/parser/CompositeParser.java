@@ -22,7 +22,6 @@ public class CompositeParser implements FileParser {
         this.jsonParser = new JsonParser(objectMapper);
     }
 
-
     @Override
     public Stream<ParserResult> parse(File file) {
         String fileExtension = getExtensionByStringHandling(file.getName())
@@ -37,7 +36,7 @@ public class CompositeParser implements FileParser {
         }
     }
 
-    public Optional<String> getExtensionByStringHandling(String filename) {
+    private Optional<String> getExtensionByStringHandling(String filename) {
         return Optional.ofNullable(filename)
                 .filter(f -> f.contains("."))
                 .map(f -> f.substring(filename.lastIndexOf('.') + 1));

@@ -1,0 +1,4 @@
+{"orderId":1,"amount":100,"currency":"USD","comment":"оплата заказа"}
+{"orderId":null,"amount":-100,"currency":"USD","comment":"оплата заказа"}
+{"orderId":3,"amount":"hhh","currency":"USD","comment":"оплата заказа"}
+{"orderId":4,"amount":100,"currency":null,"comment":"оплата заказа"}
