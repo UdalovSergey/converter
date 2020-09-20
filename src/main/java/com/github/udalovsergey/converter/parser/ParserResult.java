@@ -3,8 +3,18 @@ package com.github.udalovsergey.converter.parser;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.github.udalovsergey.converter.domen.Order;
 
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 @JsonSerialize(using = ParserResultSerializer.class)
 public class ParserResult {
+
+    private Validator validator = Validation.
+            buildDefaultValidatorFactory()
+            .getValidator();
 
     private Order order;
     private String fileName;
@@ -12,11 +22,19 @@ public class ParserResult {
     private String result;
 
 
-    public ParserResult(Order order, String fileName, long line, String result) {
+    public ParserResult(Order order, String fileName, long line) {
+        Set<ConstraintViolation<Order>> constraintViolations = validator.validate(order);
+        if (!constraintViolations.isEmpty()) {
+             this.result = constraintViolations
+                    .stream()
+                    .map(ConstraintViolation::getMessage)
+                    .collect(Collectors.joining(";"));
+        }else {
+            this.result = "OK";
+        }
         this.order = order;
         this.fileName = fileName;
         this.line = line;
-        this.result = result;
     }
 
     public ParserResult(String fileName, long line, String result) {
