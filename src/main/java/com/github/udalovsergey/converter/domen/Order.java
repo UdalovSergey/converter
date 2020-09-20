@@ -12,6 +12,7 @@ public class Order {
     @NotNull(message = "'orderId' must not be null")
     @Min(value = 0, message = "'orderId' must be greater than or equal to 0")
     private Long orderId;
+    @NotNull(message = "'amount' must not be null")
     @Min(value = 0, message = "'amount' must be greater than or equal to 0")
     private BigDecimal amount;
     @NotBlank(message = "'currency' must not be blank")

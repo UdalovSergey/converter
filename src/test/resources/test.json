@@ -2,3 +2,4 @@
 {"orderId":null,"amount":-100,"currency":"USD","comment":"оплата заказа"}
 {"orderId":3,"amount":"hhh","currency":"USD","comment":"оплата заказа"}
 {"orderId":4,"amount":100,"currency":null,"comment":"оплата заказа"}
+{"orderId":5,"amount":100,"currency":"RUR"}
